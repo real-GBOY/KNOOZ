@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفخار - كنوز</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="subStyles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">
+                <!--                 <i class="fas fa-paint-brush"></i> -->
+                <span>كنوز</span>
+            </a>
+
+            <!-- Mobile toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Main Navigation -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pottery.html">
+                            <i class="fas fa-hands"></i>
+                            <span>الحرف اليدوية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <i class="fas fa-info-circle"></i>
+                            <span>من نحن</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact-form-section">
+                            <i class="fas fa-envelope"></i>
+                            <span>تواصل معنا</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="sub-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="sub-hero-title">الفخار العربي</h1>
+                    <p class="sub-hero-text">اكتشف جمال الأواني الفخارية المصنوعة يدوياً بتقنيات تقليدية عريقة</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://i.postimg.cc/9f20fMNq/main.jpg" alt="الفخار العربي" class="sub-hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Product 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card" data-bs-toggle="modal" data-bs-target="#productModal1">
+                        <div class="product-image">
+                            <img src="https://i.postimg.cc/sX0vd6zc/MUG.jpg" alt="إناء فخاري تقليدي">
+                            <div class="product-overlay">
+                                <div class="product-category">مج فخاري</div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3>مج فخاري</h3>
+                            <p>مج فخاري مصنوع يدوياً بتقنيات تقليدية عريقة</p>
+                            <div class="product-price">150 جنيه</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card" data-bs-toggle="modal" data-bs-target="#productModal2">
+                        <div class="product-image">
+                            <img src="https://i.postimg.cc/FRMXL8Q1/Whats-App-Image-2025-04-23-at-15-26-27-b212a4c7.jpg"
+                                alt="طقم شاي فخاري">
+                            <div class="product-overlay">
+                                <div class="product-category">صحن فخاري</div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3> صحن فخاري</h3>
+                            <p>صحن فخاري بتصميم عربي أصيل</p>
+                            <div class="product-price">250 جنيه</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card" data-bs-toggle="modal" data-bs-target="#productModal3">
+                        <div class="product-image">
+                            <img src="https://i.postimg.cc/j2TcJ4Cy/Whats-App-Image-2025-04-23-at-15-26-25-7c624b67.jpg"
+                                alt="زهرية فخارية">
+                            <div class="product-overlay">
+                                <div class="product-category">زهرية</div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3>زهرية فخارية</h3>
+                            <p>زهرية فخارية بتصميم عصري</p>
+                            <div class="product-price">180 جنيه</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modals -->
+    <!-- Modal 1 -->
+    <div class="modal fade" id="productModal1" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">إناء فخاري تقليدي</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="product-gallery">
+                                <img src="https://i.postimg.cc/sX0vd6zc/MUG.jpg" alt="إناء فخاري تقليدي"
+                                    class="main-image">
+                                <!-- <div class="thumbnail-gallery">
+                                    <img src="https://i.postimg.cc/sX0vd6zc/MUG.jpg"
+                                        alt="صورة 1">
+                                    <img src="https://i.postimg.cc/sX0vd6zc/MUG.jpg"
+                                        alt="صورة 2">
+                                    <img src="https://i.postimg.cc/sX0vd6zc/MUG.jpg"
+                                        alt="صورة 3">
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-details">
+                                <h3>إناء فخاري تقليدي</h3>
+                                <div class="product-price">150 جنيه</div>
+                                <p class="product-description">إناء فخاري مصنوع يدوياً بتقنيات تقليدية عريقة، يتميز
+                                    بجودة عالية وتصميم عربي أصيل.</p>
+                                <div class="product-features">
+                                    <h4>المميزات</h4>
+                                    <ul>
+                                        <li>مصنوع يدوياً من طين طبيعي</li>
+                                        <li>مقاوم للحرارة</li>
+                                        <li>تصميم عربي أصيل</li>
+                                        <li>مناسب للاستخدام اليومي</li>
+                                    </ul>
+                                </div>
+                                <div class="product-video">
+                                    <h4>كيفية الصناعة</h4>
+                                    <div class="video-container">
+                                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <button class="custom-btn mt-4">
+                                    <span>اطلب الآن</span>
+                                    <i class="fas fa-arrow-left ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="productModal2" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">طقم شاي فخاري</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- <div class="product-gallery">
+                                <img src="https://i.postimg.cc/L6Rmf73r/photo-1565193566173-7a0ee3dbe261.jpg"
+                                    alt="طقم شاي فخاري" class="main-image">
+                                <div class="thumbnail-gallery">
+                                    <img src="https://i.postimg.cc/L6Rmf73r/photo-1565193566173-7a0ee3dbe261.jpg"
+                                        alt="صورة 1">
+                                    <img src="https://i.postimg.cc/L6Rmf73r/photo-1565193566173-7a0ee3dbe261.jpg"
+                                        alt="صورة 2">
+                                    <img src="https://i.postimg.cc/L6Rmf73r/photo-1565193566173-7a0ee3dbe261.jpg"
+                                        alt="صورة 3">
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-details">
+                                <h3>طقم شاي فخاري</h3>
+                                <div class="product-price">250 جنيه</div>
+                                <p class="product-description">طقم شاي فخاري بتصميم عربي أصيل، مثالي لتقديم الشاي العربي
+                                    التقليدي.</p>
+                                <div class="product-features">
+                                    <h4>المميزات</h4>
+                                    <ul>
+                                        <li>مصنوع يدوياً من طين طبيعي</li>
+                                        <li>يحافظ على حرارة الشاي</li>
+                                        <li>تصميم عربي أصيل</li>
+                                        <li>يشمل 6 فناجين</li>
+                                    </ul>
+                                </div>
+                                <div class="product-video">
+                                    <h4>كيفية الصناعة</h4>
+                                    <div class="video-container">
+                                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <button class="custom-btn mt-4">
+                                    <span>اطلب الآن</span>
+                                    <i class="fas fa-arrow-left ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="modal fade" id="productModal3" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">زهرية فخارية</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- <div class="product-gallery">
+                                <img src="https://i.postimg.cc/L6Rmf73r/photo-1565193566173-7a0ee3dbe261.jpg"
+                                    alt="زهرية فخارية" class="main-image">
+                                <div class="thumbnail-gallery">
+                                    <img src="https://i.postimg.cc/L6Rmf73r/photo-1565193566173-7a0ee3dbe261.jpg"
+                                        alt="صورة 1">
+                                    <img src="https://i.postimg.cc/L6Rmf73r/photo-1565193566173-7a0ee3dbe261.jpg"
+                                        alt="صورة 2">
+                                    <img src="https://i.postimg.cc/L6Rmf73r/photo-1565193566173-7a0ee3dbe261.jpg"
+                                        alt="صورة 3">
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-details">
+                                <h3>زهرية فخارية</h3>
+                                <div class="product-price">180 جنيه</div>
+                                <p class="product-description">زهرية فخارية بتصميم عصري يجمع بين الأصالة والمعاصرة.</p>
+                                <div class="product-features">
+                                    <h4>المميزات</h4>
+                                    <ul>
+                                        <li>مصنوع يدوياً من طين طبيعي</li>
+                                        <li>تصميم عصري أنيق</li>
+                                        <li>مناسب للديكور</li>
+                                        <li>متعدد الاستخدامات</li>
+                                    </ul>
+                                </div>
+                                <div class="product-video">
+                                    <h4>كيفية الصناعة</h4>
+                                    <div class="video-container">
+                                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <button class="custom-btn mt-4">
+                                    <span>اطلب الآن</span>
+                                    <i class="fas fa-arrow-left ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-brand">
+                        <h5 class="footer-title">
+                            <i class="fas fa-paint-brush"></i>
+                            حِرَف يدوية
+                        </h5>
+                        <p class="footer-description">نحتفل بجمال الحرف اليدوية وندعم الحرفيين في جميع أنحاء العالم.</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-title">
+                        <i class="fas fa-compass"></i>
+                        استكشاف
+                    </h5>
+                    <ul class="footer-list">
+                        <li><a href="#">المميزة</a></li>
+                        <li><a href="#">التصنيفات</a></li>
+                        <li><a href="#">الحرفيون</a></li>
+                        <li><a href="#">ورش العمل</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-title">
+                        <i class="fas fa-info-circle"></i>
+                        من نحن
+                    </h5>
+                    <ul class="footer-list">
+                        <li><a href="#">قصتنا</a></li>
+                        <li><a href="#">مهمتنا</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="footer-title">
+                        <i class="fas fa-envelope"></i>
+                        ابقَ مُلهماً
+                    </h5>
+                    <p class="footer-description">اشترك في نشرتنا الإخبارية للحصول على قصص الحرفيين وإلهام الحِرَف.</p>
+                    <div class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="بريدك الإلكتروني" aria-label="Email">
+                            <button class="btn" type="button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">© 2025 حِرَف يدوية. جميع الحقوق محفوظة.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-legal">
+                            <a href="#">سياسة الخصوصية</a>
+                            <a href="#">شروط الخدمة</a>
+                            <a href="#">ملفات تعريف الارتباط</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

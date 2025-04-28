@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handcrafted - Artisan Showcase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">
+                <!--                 <i class="fas fa-paint-brush"></i> -->
+                <span>كنوز</span>
+            </a>
+
+            <!-- Mobile toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Main Navigation -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pottery.html">
+                            <i class="fas fa-hands"></i>
+                            <span>الحرف اليدوية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <i class="fas fa-info-circle"></i>
+                            <span>من نحن</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-form-section">
+                            <i class="fas fa-envelope"></i>
+                            <span>تواصل معنا</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container position-relative">
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6 hero-content">
+                    <div class="hero-text-wrapper">
+                        <h1 class="hero-title">
+                            <span class="highlight">اكتشف</span> روعة الحرف اليدوية
+                        </h1>
+                        <p class="hero-subtitle mt-4">
+                            <span id="typed-paragraph"></span>
+                        </p>
+                        <div class="hero-buttons mt-5">
+                            <a href="#crafts" class="btn btn-primary btn-lg me-3">استكشف الحرف</a>
+                            <a href="#about" class="btn btn-outline-light btn-lg">تعرف علينا</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <img src="https://i.postimg.cc/9f20fMNq/main.jpg" alt="الحرف اليدوية" class="hero-image">
+                        <div class="floating-elements">
+                            <div class="floating-element element-1">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div class="floating-element element-2">
+                                <i class="fas fa-hands"></i>
+                            </div>
+                            <div class="floating-element element-3">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-text">اسحب للأسفل</div>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Featured Carousel -->
+    <div class="container mt-5 mb-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title">معرض الأعمال</h2>
+            <p class="section-subtitle">اكتشف روعة الحرف اليدوية العربية</p>
+        </div>
+        <div id="featuredCarousel" class="carousel slide featured-carousel" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <!-- First Slide -->
+                <div class="carousel-item active">
+                    <div class="carousel-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261" class="d-block w-100"
+                            alt="الفخار العربي">
+                        <div class="carousel-overlay"></div>
+                    </div>
+                    <div class="carousel-caption">
+                        <div class="caption-content">
+                            <span class="craft-category">فخار</span>
+                            <h3>الفخار العربي</h3>
+                            <p>اكتشف جمال الأواني الفخارية المصنوعة يدوياً بتقنيات تقليدية عريقة</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Second Slide -->
+                <div class="carousel-item">
+                    <div class="carousel-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1600166898405-da9535204843" class="d-block w-100"
+                            alt="السجاد العربي">
+                        <div class="carousel-overlay"></div>
+                    </div>
+                    <div class="carousel-caption">
+                        <div class="caption-content">
+                            <span class="craft-category">سجاد</span>
+                            <h3>السجاد العربي</h3>
+                            <p>تعرف على فن حياكة السجاد اليدوي بتصاميم عربية أصيلة</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Third Slide -->
+                <div class="carousel-item">
+                    <div class="carousel-image-wrapper">
+                        <img src="https://i.postimg.cc/0Nyr0rLV/Whats-App-Image-2025-04-23-at-15-42-59-557b06c2.jpg" class="d-block w-100"
+                            alt="المجوهرات العربية">
+                        <div class="carousel-overlay"></div>
+                    </div>
+                    <div class="carousel-caption">
+                        <div class="caption-content">
+                            <span class="craft-category">النحاس</span>
+                            <h3> النحاس</h3>
+                            <p>شاهد روعة النحاسيات التقليدية المصنوعة بأيدي حرفيين مهرة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Crafts Section -->
+    <section class="crafts-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">الحرف اليدوية</h2>
+                <p class="section-subtitle">اكتشف جمال الحرف اليدوية العربية الأصيلة</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Pottery Section -->
+                <div class="col-lg-3 col-md-6" id="pottery">
+                    <div class="craft-card">
+                        <div class="craft-image">
+                            <img src="https://i.postimg.cc/9f20fMNq/main.jpg" alt="الفخار العربي">
+                            <div class="craft-overlay">
+                                <div class="craft-category">فخار</div>
+                            </div>
+                        </div>
+                        <div class="craft-content">
+                            <h3>الفخار</h3>
+                            <p>فن صناعة الأواني والتحف الفخارية بأساليب تقليدية موروثة</p>
+                            <button class="custom-btn" onclick="window.location.href='pottery.html'">
+                                <span>اكتشف المزيد</span>
+                                <i class="fas fa-arrow-left ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calligraphy Section -->
+                <div class="col-lg-3 col-md-6" id="calligraphy">
+                    <div class="craft-card">
+                        <div class="craft-image">
+                            <img src="https://i.postimg.cc/WbNhzf5D/Whats-App-Image-2025-04-23-at-14-34-11-5b97540b.jpg"
+                                alt="الخط العربي">
+                            <div class="craft-overlay">
+                                <div class="craft-category">النسيج</div>
+                            </div>
+                        </div>
+                        <div class="craft-content">
+                            <h3>النسيج</h3>
+                            <p>فن النسيج العربية بأنماط وأساليب فنية متنوعة</p>
+                            <button class="custom-btn" onclick="window.location.href='texture.html'">
+                                <span>اكتشف المزيد</span>
+                                <i class="fas fa-arrow-left ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carpets Section -->
+                <div class="col-lg-3 col-md-6" id="carpets">
+                    <div class="craft-card">
+                        <div class="craft-image">
+                            <img src="https://i.postimg.cc/BvDzdN9p/Whats-App-Image-2025-04-23-at-14-34-12-a9aa77e9.jpg"
+                                alt="السجاد العربي">
+                            <div class="craft-overlay">
+                                <div class="craft-category">النحاس</div>
+                            </div>
+                        </div>
+                        <div class="craft-content">
+                            <h3>النحاس</h3>
+                            <p>فن صناعة النحاس العربية بأنماط وأساليب عربيه</p>
+                            <button class="custom-btn" onclick="window.location.href='copper.html'">
+                                <span>اكتشف المزيد</span>
+                                <i class="fas fa-arrow-left ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Craft Detail Modal -->
+    <div class="modal fade" id="craftDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body p-0" id="craftModalContent">
+                    <!-- Content will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Counter Section -->
+    <section class="achievements-section py-5 my-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">إنجازاتنا</h2>
+                <p class="section-subtitle">نفخر بما حققناه معاً في رحلتنا لدعم الحرف اليدوية</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col">
+                    <div class="achievement-card text-center p-4 rounded-3 h-100">
+                        <div class="achievement-icon mb-3">
+                            <span class="material-symbols-outlined">groups</span>
+                        </div>
+                        <h3 class="achievement-number" data-count="32">0</h3>
+                        <p class="achievement-label m-0">أعضاء الفريق</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="achievement-card text-center p-4 rounded-3 h-100">
+                        <div class="achievement-icon mb-3">
+                            <span class="material-symbols-outlined">work</span>
+                        </div>
+                        <h3 class="achievement-number" data-count="120">0</h3>
+                        <p class="achievement-label m-0">المشاريع المكتملة</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="achievement-card text-center p-4 rounded-3 h-100">
+                        <div class="achievement-icon mb-3">
+                            <span class="material-symbols-outlined">event</span>
+                        </div>
+                        <h3 class="achievement-number" data-count="24">0</h3>
+                        <p class="achievement-label m-0">الفعاليات المنظمة</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="achievement-card text-center p-4 rounded-3 h-100">
+                        <div class="achievement-icon mb-3">
+                            <span class="material-symbols-outlined">public</span>
+                        </div>
+                        <h3 class="achievement-number" data-count="15">0</h3>
+                        <p class="achievement-label m-0">الدول التي نصل إليها</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="achievement-card text-center p-4 rounded-3 h-100">
+                        <div class="achievement-icon mb-3">
+                            <span class="material-symbols-outlined">volunteer_activism</span>
+                        </div>
+                        <h3 class="achievement-number" data-count="50">0</h3>
+                        <p class="achievement-label m-0">المتطوعون</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section my-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="text-center mb-4">
+                        <h2>تواصل معنا</h2>
+                        <p>نحن هنا للإجابة على استفساراتك ومساعدتك في كل ما تحتاج</p>
+                    </div>
+                    <form class="contact-form p-4 rounded shadow-sm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">الاسم الأول</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">الاسم الأخير</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">الرسالة</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn sendButton custom-btn px-5">إرسال</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-brand">
+                        <h5 class="footer-title">
+                            <i class="fas fa-paint-brush"></i>
+                            حِرَف يدوية
+                        </h5>
+                        <p class="footer-description">لكل قطعه معانا حكاية ، هدفنا دعم الحرف اليدويه اللي هي جزء اساسي
+                            من تراث مصر واننا نوصل الكُنُوز دي لكل بيت
+                        </p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-title">
+                        <i class="fas fa-compass"></i>
+                        استكشاف
+                    </h5>
+                    <ul class="footer-list">
+                        <li><a href="#">المميزة</a></li>
+                        <li><a href="#">التصنيفات</a></li>
+                        <li><a href="#">الحرفيون</a></li>
+                        <li><a href="#">ورش العمل</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-title">
+                        <i class="fas fa-info-circle"></i>
+                        من نحن
+                    </h5>
+                    <ul class="footer-list">
+                        <li><a href="#">قصتنا</a></li>
+                        <li><a href="#">مهمتنا</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="footer-title">
+                        <i class="fas fa-envelope"></i>
+                        ابقَ مُلهماً
+                    </h5>
+                    <p class="footer-description">اشترك في نشرتنا الإخبارية للحصول على قصص الحرفيين وإلهام الحِرَف.</p>
+                    <div class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="بريدك الإلكتروني" aria-label="Email">
+                            <button class="btn" type="button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">© 2025 حِرَف يدوية. جميع الحقوق محفوظة.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-legal">
+                            <a href="#">سياسة الخصوصية</a>
+                            <a href="#">شروط الخدمة</a>
+                            <a href="#">ملفات تعريف الارتباط</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var options = {
+                strings: [
+                    "استكشف منتجات فريدة مصنوعة بحب وتقاليد عريقة على أيدي حرفيين مهرة مصريين.",
+                    "اكتشف الحرف اليدوية التي تمثل تراثنا الثقافي الغني.",
+                    "انضم إلينا في دعم الحرفيين المحليين والحفاظ على الفنون التقليدية."
+                ],
+                typeSpeed: 30, // Speed in milliseconds per character
+                backSpeed: 25, // Speed in milliseconds per character for backspacing
+                backDelay: 2000, // Delay before starting to backspace
+                startDelay: 1000, // Delay before typing starts
+                loop: true,   // Loop the typing animation
+                showCursor: true, // Shows the blinking cursor
+                cursorChar: '|',  // Character for cursor
+            };
+
+            var typed = new Typed('#typed-paragraph', options);
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
