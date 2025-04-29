@@ -1435,3 +1435,58 @@ img {
 .newsletter-form {
 	opacity: 0;
 }
+
+/* Customizer Section */
+.customizer-section {
+	background: url("https://i.postimg.cc/9f20fMNq/main.jpg") no-repeat center
+		center / cover;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+	padding: 100px 0;
+}
+
+.customizer-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.customizer-card {
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 15px;
+	padding: 30px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+}
+
+.customizer-content h3 {
+	color: #333;
+	font-size: 1.8rem;
+	margin-bottom: 1rem;
+}
+
+.customizer-content p {
+	color: #666;
+	font-size: 1.1rem;
+	line-height: 1.6;
+}
+
+.customizer-section .custom-btn {
+	background: #8b4513;
+	border: none;
+	padding: 12px 30px;
+	font-size: 1.1rem;
+	transition: all 0.3s ease;
+}
+
+.customizer-section .custom-btn:hover {
+	background: #a0522d;
+	transform: translateY(-3px);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Craft Detail Modal */

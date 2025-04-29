@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Product Customizer - كنوز</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .customizer-container {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .preview-box {
+            width: 100%;
+            height: 500px;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            position: relative;
+            perspective: 1200px;
+            overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            cursor: grab;
+        }
+
+        .preview-3d:active {
+            cursor: grabbing;
+        }
+
+        /* Common 3D object styles */
+        .object3d {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        /* Enhanced Pattern styles */
+        .pattern-traditional {
+            background-image:
+                repeating-linear-gradient(45deg,
+                    rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 2px,
+                    transparent 2px, transparent 10px),
+                repeating-linear-gradient(-45deg,
+                    rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 2px,
+                    transparent 2px, transparent 10px);
+            background-blend-mode: multiply;
+        }
+
+        .pattern-modern {
+            background-image:
+                linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            background-blend-mode: multiply;
+        }
+
+        .pattern-geometric {
+            background-image:
+                linear-gradient(30deg, rgba(0, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(0, 0, 0, 0.1) 87.5%, rgba(0, 0, 0, 0.1)),
+                linear-gradient(150deg, rgba(0, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(0, 0, 0, 0.1) 87.5%, rgba(0, 0, 0, 0.1)),
+                linear-gradient(30deg, rgba(0, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(0, 0, 0, 0.1) 87.5%, rgba(0, 0, 0, 0.1)),
+                linear-gradient(150deg, rgba(0, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(0, 0, 0, 0.1) 87.5%, rgba(0, 0, 0, 0.1));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+            background-blend-mode: multiply;
+        }
+
+        /* Enhanced Pottery 3D Models */
+        .pottery-vase {
+            width: 200px;
+            height: 300px;
+            transform: translateX(-50%) translateY(-50%);
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+        }
+
+        .pottery-vase .base {
+            position: absolute;
+            width: 200px;
+            height: 60px;
+            background: currentColor;
+            border-radius: 50%;
+            transform: rotateX(90deg) translateZ(-150px);
+            box-shadow:
+                0 10px 20px rgba(0, 0, 0, 0.2),
+                inset 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .pottery-vase .body {
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background: currentColor;
+            border-radius: 50% 50% 30% 30% / 20% 20% 80% 80%;
+            transform-origin: center bottom;
+            box-shadow:
+                inset -20px -20px 60px rgba(0, 0, 0, 0.2),
+                inset 20px 20px 60px rgba(255, 255, 255, 0.1);
+            background-image:
+                radial-gradient(circle at 50% 50%,
+                    rgba(255, 255, 255, 0.1) 0%,
+                    transparent 50%);
+        }
+
+        .pottery-vase .neck {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            background: currentColor;
+            border-radius: 30% 30% 50% 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-60px);
+            box-shadow:
+                inset -10px -10px 30px rgba(0, 0, 0, 0.2),
+                inset 10px 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enhanced Copper 3D Models */
+        .copper-pot {
+            width: 250px;
+            height: 200px;
+            transform: translateX(-50%) translateY(-50%);
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+        }
+
+        .copper-pot .body {
+            position: absolute;
+            width: 250px;
+            height: 200px;
+            background: currentColor;
+            border-radius: 50% 50% 30% 30% / 30% 30% 70% 70%;
+            box-shadow:
+                inset -20px -20px 60px rgba(0, 0, 0, 0.2),
+                inset 20px 20px 60px rgba(255, 255, 255, 0.2),
+                5px 5px 15px rgba(0, 0, 0, 0.3);
+            background-image:
+                radial-gradient(circle at 50% 50%,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    transparent 50%);
+        }
+
+        .copper-pot .handle {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            border: 15px solid currentColor;
+            border-radius: 50px 50px 0 0;
+            top: -40px;
+            left: 75px;
+            box-shadow:
+                5px -5px 15px rgba(0, 0, 0, 0.2),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .copper-pot .spout {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            background: currentColor;
+            transform: rotate(-45deg);
+            right: -20px;
+            top: 50px;
+            border-radius: 20px;
+            box-shadow:
+                5px 5px 15px rgba(0, 0, 0, 0.2),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enhanced Textile 3D Models */
+        .textile-carpet {
+            width: 300px;
+            height: 400px;
+            transform: translateX(-50%) translateY(-50%);
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+        }
+
+        .textile-carpet .surface {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            background: currentColor;
+            border: 10px solid rgba(0, 0, 0, 0.2);
+            transform: rotateX(60deg);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 0 50px rgba(0, 0, 0, 0.2),
+                inset 0 0 50px rgba(255, 255, 255, 0.1);
+            background-image:
+                linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.1) 25%,
+                    transparent 25%,
+                    transparent 75%,
+                    rgba(255, 255, 255, 0.1) 75%);
+            background-size: 20px 20px;
+        }
+
+        .textile-carpet .fringe {
+            position: absolute;
+            width: 300px;
+            height: 20px;
+            background: linear-gradient(90deg,
+                    transparent 0%, currentColor 5%,
+                    transparent 10%, currentColor 15%,
+                    transparent 20%, currentColor 25%,
+                    transparent 30%, currentColor 35%,
+                    transparent 40%, currentColor 45%,
+                    transparent 50%, currentColor 55%,
+                    transparent 60%, currentColor 65%,
+                    transparent 70%, currentColor 75%,
+                    transparent 80%, currentColor 85%,
+                    transparent 90%, currentColor 95%,
+                    transparent 100%);
+            transform: rotateX(60deg) translateY(400px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced pattern thumbnails */
+        .pattern-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            margin: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pattern-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: currentColor;
+            opacity: 0.8;
+        }
+
+        .pattern-thumbnail.traditional::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(45deg,
+                    rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0.2) 2px,
+                    transparent 2px, transparent 10px);
+        }
+
+        .pattern-thumbnail.modern::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(45deg, rgba(0, 0, 0, 0.2) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0, 0, 0, 0.2) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.2) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.2) 75%);
+            background-size: 10px 10px;
+            background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+        }
+
+        .pattern-thumbnail.geometric::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(30deg, rgba(0, 0, 0, 0.2) 12%, transparent 12.5%, transparent 87%, rgba(0, 0, 0, 0.2) 87.5%, rgba(0, 0, 0, 0.2)),
+                linear-gradient(150deg, rgba(0, 0, 0, 0.2) 12%, transparent 12.5%, transparent 87%, rgba(0, 0, 0, 0.2) 87.5%, rgba(0, 0, 0, 0.2));
+            background-size: 20px 20px;
+        }
+
+        .pattern-thumbnail:hover,
+        .pattern-thumbnail.active {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .material-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-text {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 1rem;
+            z-index: 10;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-type-btn {
+            background-color: var(--secondary-color);
+            border: 2px solid var(--accent-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-type-btn.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .save-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .save-button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.02);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .share-button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: white;
+        }
+
+        .share-button.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .share-button.facebook {
+            background-color: #1877f2;
+        }
+
+        .share-button:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        .share-button i {
+            font-size: 1.2rem;
+        }
+
+        .share-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .share-modal {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .share-modal img {
+            max-width: 100%;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .share-modal .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="customizer-container">
+                    <h2 class="text-center mb-4" style="color: var(--primary-color);">تخصيص المنتج ثلاثي الأبعاد</h2>
+
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="product-type-selector d-flex justify-content-center gap-3">
+                                <button class="product-type-btn active" data-type="pottery">
+                                    <i class="fas fa-hands"></i>
+                                    <span>الفخار</span>
+                                </button>
+                                <button class="product-type-btn" data-type="copper">
+                                    <i class="fas fa-coins"></i>
+                                    <span>النحاس</span>
+                                </button>
+                                <button class="product-type-btn" data-type="textile">
+                                    <i class="fas fa-tshirt"></i>
+                                    <span>النسيج</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7">
+                            <div class="preview-box mb-4">
+                                <div class="preview-3d" id="preview3D">
+                                    <!-- 3D objects will be added here dynamically -->
+                                </div>
+                                <div class="material-badge" id="materialBadge">فخار</div>
+                                <div class="preview-text" id="previewText">نص مخصص</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="controls-container">
+                                <form id="customizerForm">
+                                    <div class="mb-3">
+                                        <label for="productSelect" class="form-label">اختر المنتج</label>
+                                        <select class="form-select" id="productSelect">
+                                            <!-- Products will be loaded dynamically -->
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="colorPicker" class="form-label">اختر اللون</label>
+                                        <input type="color" class="form-control form-control-color w-100"
+                                            id="colorPicker" value="#8B4513">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">اختر النقش</label>
+                                        <div class="pattern-container d-flex flex-wrap gap-2" id="patternContainer">
+                                            <div class="pattern-thumbnail traditional active"
+                                                data-pattern="traditional"></div>
+                                            <div class="pattern-thumbnail modern" data-pattern="modern"></div>
+                                            <div class="pattern-thumbnail geometric" data-pattern="geometric"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="materialSelect" class="form-label">اختر الخامة</label>
+                                        <select class="form-select" id="materialSelect">
+                                            <!-- Materials will be loaded dynamically -->
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="customText" class="form-label">نص مخصص</label>
+                                        <input type="text" class="form-control" id="customText"
+                                            placeholder="أدخل النص المخصص">
+                                    </div>
+
+                                    <button type="button" class="save-button" id="saveButton">
+                                        <i class="fas fa-save"></i>
+                                        <span>حفظ التصميم</span>
+                                    </button>
+
+                                    <div class="share-buttons">
+                                        <button class="share-button instagram" id="shareInstagram">
+                                            <i class="fab fa-instagram"></i>
+                                            <span>مشاركة على إنستغرام</span>
+                                        </button>
+                                        <button class="share-button facebook" id="shareFacebook">
+                                            <i class="fab fa-facebook"></i>
+                                            <span>مشاركة على فيسبوك</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="share-overlay" id="shareOverlay">
+        <button class="close-button" id="closeShareModal">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="share-modal">
+            <h3>مشاركة التصميم</h3>
+            <div id="sharePreview"></div>
+            <p>انسخ الرابط أدناه لمشاركة التصميم:</p>
+            <input type="text" id="shareLink" class="form-control mb-3" readonly>
+            <button class="btn btn-primary" id="copyLink">
+                <i class="fas fa-copy"></i>
+                نسخ الرابط
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const productTypes = {
+            pottery: {
+                products: [
+                    {
+                        id: 1,
+                        name: 'مزهرية فخارية',
+                        type: 'pottery-vase',
+                        price: '250 جنيه',
+                        defaultColor: '#8B4513'
+                    },
+                    {
+                        id: 2,
+                        name: 'إناء فخاري',
+                        type: 'pottery-vase',
+                        price: '200 جنيه',
+                        defaultColor: '#A0522D'
+                    }
+                ],
+                patterns: [
+                    { name: 'تقليدي', type: 'traditional' },
+                    { name: 'عصري', type: 'modern' },
+                    { name: 'هندسي', type: 'geometric' }
+                ],
+                materials: ['فخار', 'خزف', 'طين صيني', 'طين أحمر']
+            },
+            copper: {
+                products: [
+                    {
+                        id: 1,
+                        name: 'إبريق نحاسي',
+                        type: 'copper-pot',
+                        price: '350 جنيه',
+                        defaultColor: '#B87333'
+                    },
+                    {
+                        id: 2,
+                        name: 'قدر نحاسي',
+                        type: 'copper-pot',
+                        price: '400 جنيه',
+                        defaultColor: '#CD7F32'
+                    }
+                ],
+                patterns: [
+                    { name: 'منقوش', type: 'traditional' },
+                    { name: 'مطروق', type: 'modern' },
+                    { name: 'ملمع', type: 'geometric' }
+                ],
+                materials: ['نحاس أحمر', 'نحاس أصفر', 'برونز', 'نحاس مؤكسد']
+            },
+            textile: {
+                products: [
+                    {
+                        id: 1,
+                        name: 'سجادة تقليدية',
+                        type: 'textile-carpet',
+                        price: '550 جنيه',
+                        defaultColor: '#8B4513'
+                    },
+                    {
+                        id: 2,
+                        name: 'بساط منقوش',
+                        type: 'textile-carpet',
+                        price: '450 جنيه',
+                        defaultColor: '#A0522D'
+                    }
+                ],
+                patterns: [
+                    { name: 'هندسي', type: 'geometric' },
+                    { name: 'نباتي', type: 'modern' },
+                    { name: 'تقليدي', type: 'traditional' }
+                ],
+                materials: ['قطن', 'حرير', 'صوف', 'كتان']
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const preview3D = document.getElementById('preview3D');
+            const previewText = document.getElementById('previewText');
+            const materialBadge = document.getElementById('materialBadge');
+            const colorPicker = document.getElementById('colorPicker');
+            const patternContainer = document.getElementById('patternContainer');
+            const materialSelect = document.getElementById('materialSelect');
+            const customText = document.getElementById('customText');
+            const productSelect = document.getElementById('productSelect');
+            const productTypeBtns = document.querySelectorAll('.product-type-btn');
+            const saveButton = document.getElementById('saveButton');
+
+            let currentType = 'pottery';
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+            let rotation = { x: 0, y: 0 };
+
+            function create3DObject(type, product) {
+                preview3D.innerHTML = '';
+
+                const object = document.createElement('div');
+                object.className = `object3d ${product.type}`;
+
+                switch (product.type) {
+                    case 'pottery-vase':
+                        object.innerHTML = `
+                            <div class="base"></div>
+                            <div class="body"></div>
+                            <div class="neck"></div>
+                        `;
+                        break;
+
+                    case 'copper-pot':
+                        object.innerHTML = `
+                            <div class="body"></div>
+                            <div class="handle"></div>
+                            <div class="spout"></div>
+                        `;
+                        break;
+
+                    case 'textile-carpet':
+                        object.innerHTML = `
+                            <div class="surface"></div>
+                            <div class="fringe"></div>
+                        `;
+                        break;
+                }
+
+                preview3D.appendChild(object);
+                updateObjectAppearance();
+            }
+
+            function updateObjectAppearance() {
+                const object = preview3D.querySelector('.object3d');
+                if (!object) return;
+
+                const color = colorPicker.value;
+                const pattern = document.querySelector('.pattern-thumbnail.active')?.dataset.pattern;
+
+                object.style.color = color;
+
+                const parts = object.querySelectorAll('.body, .surface');
+                parts.forEach(part => {
+                    part.className = part.className.split(' ').filter(c => !c.includes('pattern-')).join(' ');
+                    if (pattern) {
+                        part.classList.add(`pattern-${pattern}`);
+                    }
+                });
+            }
+
+            function updateProductSelect(type) {
+                productSelect.innerHTML = '';
+                productTypes[type].products.forEach(product => {
+                    const option = document.createElement('option');
+                    option.value = product.id;
+                    option.textContent = `${product.name} - ${product.price}`;
+                    productSelect.appendChild(option);
+                });
+            }
+
+            function handleMouseDown(e) {
+                isDragging = true;
+                previousMousePosition = {
+                    x: e.clientX,
+                    y: e.clientY
+                };
+            }
+
+            function handleMouseMove(e) {
+                if (!isDragging) return;
+
+                const deltaMove = {
+                    x: e.clientX - previousMousePosition.x,
+                    y: e.clientY - previousMousePosition.y
+                };
+
+                rotation.y += deltaMove.x * 0.5;
+                rotation.x += deltaMove.y * 0.5;
+
+                const object = preview3D.querySelector('.object3d');
+                if (object) {
+                    object.style.transform = `translateX(-50%) translateY(-50%) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`;
+                }
+
+                previousMousePosition = {
+                    x: e.clientX,
+                    y: e.clientY
+                };
+            }
+
+            function handleMouseUp() {
+                isDragging = false;
+            }
+
+            function updateProductType(type) {
+                currentType = type;
+                const product = productTypes[type];
+
+                // Update product select
+                updateProductSelect(type);
+
+                // Create 3D object for first product
+                create3DObject(type, product.products[0]);
+
+                // Update materials
+                materialSelect.innerHTML = '';
+                product.materials.forEach((material, index) => {
+                    const option = document.createElement('option');
+                    option.value = material;
+                    option.textContent = material;
+                    if (index === 0) option.selected = true;
+                    materialSelect.appendChild(option);
+                });
+
+                // Update color picker
+                colorPicker.value = product.products[0].defaultColor;
+
+                // Update material badge
+                materialBadge.textContent = product.materials[0];
+
+                // Reset rotation
+                rotation = { x: 0, y: 0 };
+                updateObjectAppearance();
+            }
+
+            // Product type selection
+            productTypeBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    productTypeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    updateProductType(this.dataset.type);
+                });
+            });
+
+            // Product selection
+            productSelect.addEventListener('change', function () {
+                const product = productTypes[currentType].products.find(p => p.id === parseInt(this.value));
+                if (product) {
+                    create3DObject(currentType, product);
+                }
+            });
+
+            // Color changes
+            colorPicker.addEventListener('input', updateObjectAppearance);
+
+            // Pattern changes
+            patternContainer.addEventListener('click', function (e) {
+                const thumbnail = e.target.closest('.pattern-thumbnail');
+                if (thumbnail) {
+                    document.querySelectorAll('.pattern-thumbnail').forEach(t => t.classList.remove('active'));
+                    thumbnail.classList.add('active');
+                    updateObjectAppearance();
+                }
+            });
+
+            // Material changes
+            materialSelect.addEventListener('change', function () {
+                materialBadge.textContent = this.value;
+            });
+
+            // Text changes
+            customText.addEventListener('input', function () {
+                previewText.textContent = this.value || 'نص مخصص';
+            });
+
+            // Mouse events for 3D rotation
+            preview3D.addEventListener('mousedown', handleMouseDown);
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+
+            // Share functionality
+            const shareOverlay = document.getElementById('shareOverlay');
+            const sharePreview = document.getElementById('sharePreview');
+            const shareLink = document.getElementById('shareLink');
+            const closeShareModal = document.getElementById('closeShareModal');
+            const copyLink = document.getElementById('copyLink');
+            const shareInstagram = document.getElementById('shareInstagram');
+            const shareFacebook = document.getElementById('shareFacebook');
+
+            function captureProductPreview() {
+                const object = preview3D.querySelector('.object3d');
+                if (!object) return null;
+
+                // Create a temporary canvas
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 800;
+                canvas.height = 600;
+
+                // Draw the preview box background
+                context.fillStyle = '#f8f9fa';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw the 3D object
+                const objectData = {
+                    type: currentType,
+                    product: productTypes[currentType].products.find(p => p.id === parseInt(productSelect.value)),
+                    color: colorPicker.value,
+                    pattern: document.querySelector('.pattern-thumbnail.active')?.dataset.pattern,
+                    material: materialSelect.value,
+                    text: customText.value,
+                    rotation: rotation
+                };
+
+                // Create a data URL for sharing
+                const dataUrl = canvas.toDataURL('image/png');
+                return { dataUrl, objectData };
+            }
+
+            function generateShareLink(objectData) {
+                const baseUrl = window.location.origin + window.location.pathname;
+                const params = new URLSearchParams();
+                params.append('type', objectData.type);
+                params.append('product', objectData.product.id);
+                params.append('color', objectData.color);
+                params.append('pattern', objectData.pattern);
+                params.append('material', objectData.material);
+                params.append('text', objectData.text);
+                params.append('rotation', JSON.stringify(objectData.rotation));
+                return `${baseUrl}?${params.toString()}`;
+            }
+
+            function showShareModal() {
+                const preview = captureProductPreview();
+                if (!preview) return;
+
+                // Update share preview
+                sharePreview.innerHTML = `
+                    <img src="${preview.dataUrl}" alt="تصميم المنتج">
+                    <p>${preview.objectData.product.name} - ${preview.objectData.material}</p>
+                `;
+
+                // Generate and set share link
+                const link = generateShareLink(preview.objectData);
+                shareLink.value = link;
+
+                // Show modal
+                shareOverlay.style.display = 'flex';
+            }
+
+            function closeModal() {
+                shareOverlay.style.display = 'none';
+            }
+
+            function copyToClipboard() {
+                shareLink.select();
+                document.execCommand('copy');
+                alert('تم نسخ الرابط بنجاح!');
+            }
+
+            function shareOnInstagram() {
+                const preview = captureProductPreview();
+                if (!preview) return;
+
+                // Instagram sharing logic
+                const caption = encodeURIComponent(`تصميم ${preview.objectData.product.name} من كنوز`);
+                const url = `https://www.instagram.com/create/story?caption=${caption}&backgroundImage=${encodeURIComponent(preview.dataUrl)}`;
+                window.open(url, '_blank');
+            }
+
+            function shareOnFacebook() {
+                const preview = captureProductPreview();
+                if (!preview) return;
+
+                // Facebook sharing logic
+                const url = generateShareLink(preview.objectData);
+                const title = encodeURIComponent(`تصميم ${preview.objectData.product.name} من كنوز`);
+                const description = encodeURIComponent(`تصميم مخصص من كنوز - ${preview.objectData.material}`);
+                const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${title}&description=${description}`;
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+
+            // Event listeners
+            closeShareModal.addEventListener('click', closeModal);
+            copyLink.addEventListener('click', copyToClipboard);
+            shareInstagram.addEventListener('click', shareOnInstagram);
+            shareFacebook.addEventListener('click', shareOnFacebook);
+
+            // Close modal when clicking outside
+            shareOverlay.addEventListener('click', (e) => {
+                if (e.target === shareOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Load shared design if URL parameters exist
+            function loadSharedDesign() {
+                const params = new URLSearchParams(window.location.search);
+                if (params.has('type')) {
+                    const type = params.get('type');
+                    const productId = parseInt(params.get('product'));
+                    const color = params.get('color');
+                    const pattern = params.get('pattern');
+                    const material = params.get('material');
+                    const text = params.get('text');
+                    const rotation = JSON.parse(params.get('rotation'));
+
+                    // Update product type
+                    const typeBtn = document.querySelector(`.product-type-btn[data-type="${type}"]`);
+                    if (typeBtn) {
+                        typeBtn.click();
+                    }
+
+                    // Update product
+                    const product = productTypes[type].products.find(p => p.id === productId);
+                    if (product) {
+                        productSelect.value = productId;
+                        create3DObject(type, product);
+                    }
+
+                    // Update color
+                    if (color) {
+                        colorPicker.value = color;
+                    }
+
+                    // Update pattern
+                    if (pattern) {
+                        const patternBtn = document.querySelector(`.pattern-thumbnail[data-pattern="${pattern}"]`);
+                        if (patternBtn) {
+                            patternBtn.click();
+                        }
+                    }
+
+                    // Update material
+                    if (material) {
+                        materialSelect.value = material;
+                        materialBadge.textContent = material;
+                    }
+
+                    // Update text
+                    if (text) {
+                        customText.value = text;
+                        previewText.textContent = text;
+                    }
+
+                    // Update rotation
+                    if (rotation) {
+                        const object = preview3D.querySelector('.object3d');
+                        if (object) {
+                            object.style.transform = `translateX(-50%) translateY(-50%) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`;
+                        }
+                    }
+
+                    updateObjectAppearance();
+                }
+            }
+
+            // Load shared design on page load
+            loadSharedDesign();
+        });
+    </script>
+</body>
+
+</html>
